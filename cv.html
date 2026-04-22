@@ -48,22 +48,34 @@
     border-bottom: 1px solid rgba(255,255,255,.08);
   }
 
+  /* ── AVATAR FIX ── */
   .avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  overflow: hidden;
-}
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;   /* anchor for the img */
+    background: #1e2d4a;  /* fallback bg while image loads */
+  }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* 🔥 key line */
-  object-position: center; /* optional */
-  display: block;
-}
+  .avatar img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  /* ── END AVATAR FIX ── */
 
   .avatar-fallback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: 'Instrument Serif', serif;
     font-size: 28px;
     color: white;
@@ -272,7 +284,7 @@
 
     <div class="avatar-wrap">
       <div class="avatar">
-        <img src="icon.jpg" alt="Miras Algatay" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <img src="icon.jpg" alt="Miras Algatay" onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-fallback').style.display='block';">
         <span class="avatar-fallback" style="display:none">M</span>
       </div>
       <div class="sidebar-name">Miras <em>Algatay</em></div>
