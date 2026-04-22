@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CV — Miras Algatay</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f4f0;
+    color: #1a1a1a;
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 40px auto;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 68mm 1fr;
+    box-shadow: 0 4px 40px rgba(0,0,0,.10);
+    overflow: hidden;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: #0e1729;
+    padding: 10mm 7mm;
+    color: #c8d0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 7mm;
+  }
+
+  .avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4mm;
+    padding-bottom: 6mm;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(91,140,255,.3);
+    flex-shrink: 0;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, #1a3cff, #00b894);
+  }
+
+  .avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .avatar-fallback {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    color: white;
+    font-style: italic;
+  }
+
+  .sidebar-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .sidebar-name em { font-style: italic; color: #5b8cff; }
+
+  .sidebar-role {
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #00b894;
+    text-align: center;
+  }
+
+  .s-section { display: flex; flex-direction: column; gap: 3mm; }
+
+  .s-label {
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #5b8cff;
+    font-weight: 600;
+    margin-bottom: 1mm;
+  }
+
+  .s-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .s-item-title { font-size: 12px; color: #e8eaf0; font-weight: 500; }
+  .s-item-sub   { font-size: 10.5px; color: #7a8299; }
+
+  .contact-row {
+    display: flex; align-items: flex-start; gap: 6px;
+    font-size: 11px; color: #8a93a8; line-height: 1.6;
+  }
+
+  .contact-row a { color: #8a93a8; text-decoration: none; }
+  .contact-row a:hover { color: #5b8cff; }
+
+  .contact-icon { color: #5b8cff; font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+  /* Skill bars */
+  .skill-item { margin-bottom: 3mm; }
+  .skill-header { display: flex; justify-content: space-between; font-size: 11.5px; color: #c8d0e0; margin-bottom: 2px; }
+  .skill-level  { font-size: 10px; color: #5b8cff; }
+  .skill-track  { height: 3px; background: rgba(255,255,255,.08); border-radius: 100px; }
+  .skill-fill   { height: 100%; border-radius: 100px; background: linear-gradient(90deg, #1a3cff, #00b894); }
+
+  /* Tag pills */
+  .pill {
+    display: inline-block;
+    background: rgba(91,140,255,.12);
+    border: 1px solid rgba(91,140,255,.2);
+    color: #5b8cff;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 100px;
+    margin: 1px 2px 1px 0;
+    letter-spacing: .03em;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 10mm 9mm 10mm 8mm;
+    display: flex;
+    flex-direction: column;
+    gap: 6mm;
+  }
+
+  .main-header {
+    padding-bottom: 5mm;
+    border-bottom: 2px solid #f0f0ec;
+  }
+
+  .main-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    line-height: 1.1;
+    color: #0e1729;
+  }
+
+  .main-name em { font-style: italic; color: #1a3cff; }
+
+  .main-tagline {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2mm;
+    max-width: 44ch;
+    line-height: 1.6;
+  }
+
+  /* Section */
+  .m-section { display: flex; flex-direction: column; gap: 3mm; }
+
+  .m-label {
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #1a3cff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .m-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e8e4;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 8px;
+    align-items: start;
+  }
+
+  .entry-title { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+  .entry-sub   { font-size: 11.5px; color: #666; }
+  .entry-date  { font-size: 10.5px; color: #999; white-space: nowrap; font-family: 'Inter', sans-serif; padding-top: 1px; }
+
+  .entry-desc {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.65;
+    margin-top: 1mm;
+  }
+
+  .entry-bullets {
+    grid-column: 1 / -1;
+    font-size: 11.5px;
+    color: #555;
+    line-height: 1.7;
+    margin-top: 1mm;
+    padding-left: 12px;
+  }
+
+  .entry-bullets li { margin-bottom: 1px; }
+
+  /* Project cards */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+
+  .proj-card {
+    background: #f8f8f5;
+    border: 1px solid #e8e8e4;
+    border-radius: 8px;
+    padding: 3mm 4mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proj-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #1a3cff, #00b894);
+  }
+
+  .proj-name { font-size: 12px; font-weight: 600; color: #1a1a1a; margin-bottom: 1px; }
+  .proj-type { font-size: 10px; color: #999; }
+  .proj-tags { margin-top: 2mm; }
+
+  .proj-tag {
+    display: inline-block;
+    font-size: 9px;
+    background: #eef0ff;
+    color: #1a3cff;
+    padding: 1px 6px;
+    border-radius: 100px;
+    margin: 1px 2px 0 0;
+    letter-spacing: .03em;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="avatar-wrap">
+      <!-- Replace "photo.jpg" with your actual image filename -->
+      <div class="avatar">
+        <img src="photo.jpg" alt="Miras Algatay" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="avatar-fallback" style="display:none">M</span>
+      </div>
+      <div class="sidebar-name">Miras <em>Algatay</em></div>
+      <div class="sidebar-role">UX/UI Designer · CS Student</div>
+    </div>
+
+    <!-- Contact -->
+    <div class="s-section">
+      <div class="s-label">Kontakt</div>
+      <div class="contact-row"><span class="contact-icon">✉</span>mirasalgataj06@gmail.com</div>
+      <div class="contact-row"><span class="contact-icon">✆</span>+49 160 124 19 15</div>
+      <div class="contact-row"><span class="contact-icon">◍</span>Bremen, Deutschland</div>
+      <div class="contact-row"><span class="contact-icon">in</span><a href="https://www.linkedin.com/in/miras-algatay-93914b304/" target="_blank">linkedin.com/in/miras-algatay</a></div>
+      <div class="contact-row"><span class="contact-icon">Be</span><a href="https://www.behance.net/825f2472" target="_blank">behance.net/825f2472</a></div>
+    </div>
+
+    <!-- Skills -->
+    <div class="s-section">
+      <div class="s-label">Design Skills</div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Figma</span><span class="skill-level">Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Prototyping</span><span class="skill-level">Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Design Systems</span><span class="skill-level">Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:71%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>UI Components</span><span class="skill-level">Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:69%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Wireframing</span><span class="skill-level">Basic</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:30%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Interaktionsdesign</span><span class="skill-level">Basic</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:40%"></div></div>
+      </div>
+    </div>
+
+    <!-- Tech -->
+    <div class="s-section">
+      <div class="s-label">Technologie</div>
+      <div class="skill-item">
+        <div class="skill-header"><span>C / C++</span><span class="skill-level">Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    <!-- Psychology -->
+    <div class="s-section">
+      <div class="s-label">Psychologie & UX</div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Kognitive UX</span><span class="skill-level">Good</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Nutzerforschung</span><span class="skill-level">Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Nutzerverhalten</span><span class="skill-level">Good</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span>Barrierefreiheit</span><span class="skill-level">Basic</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:35%"></div></div>
+      </div>
+    </div>
+
+    <!-- Interests -->
+    <div class="s-section">
+      <div class="s-label">Interessengebiete</div>
+      <div style="margin-top:1mm">
+        <span class="pill">Kognitive Psychologie</span>
+        <span class="pill">Human-Computer Interaction</span>
+        <span class="pill">Accessibility</span>
+        <span class="pill">Design Tokens</span>
+        <span class="pill">Public Sector UX</span>
+        <span class="pill">Information Architecture</span>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="s-section">
+      <div class="s-label">Sprachen</div>
+      <div class="s-item"><div class="s-item-title">Englisch</div><div class="s-item-sub">Fließend</div></div>
+      <div class="s-item"><div class="s-item-title">Deutsch</div><div class="s-item-sub">A2 — aktiv in Verbesserung</div></div>
+      <div class="s-item"><div class="s-item-title">Russisch / Kasachisch</div><div class="s-item-sub">Muttersprache</div></div>
+    </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="main-header">
+      <div class="main-name">Miras <em>Algatay</em></div>
+      <div class="main-tagline">UX/UI-focused Computer Science student with a minor in Psychology. Combines technical understanding with user-centered design to create intuitive and structured digital products. Strong in user flows, wireframing, and interface design using Figma.</div>
+    </div>
+
+    <!-- Education -->
+    <div class="m-section">
+      <div class="m-label">Education</div>
+      <div class="entry">
+        <div>
+          <div class="entry-title">B.Sc. Computer Science & Psychology</div>
+          <div class="entry-sub">Constructor University Bremen</div>
+        </div>
+        <div class="entry-date">2023 — heute</div>
+        <div class="entry-desc">Interdisziplinäres Studium mit Schwerpunkten in Software Engineering, kognitiver Psychologie und Human-Computer Interaction. Spezialisierung auf nutzerzentriertes Design.</div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="m-section">
+      <div class="m-label">Erfahrung</div>
+
+      <div class="entry">
+        <div>
+          <div class="entry-title">Social Design Team Member</div>
+          <div class="entry-sub">Google Developer Group</div>
+        </div>
+        <div class="entry-date">2025</div>
+        <ul class="entry-bullets">
+          <li>Erstellung visueller Inhalte für 5+ Events</li>
+          <li>Steigerung der Sichtbarkeit über Instagram-Kommunikation</li>
+          <li>Zusammenarbeit im Bereich visuelles Storytelling</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div>
+          <div class="entry-title">Community Impact Project Member</div>
+          <div class="entry-sub">Constructor University Bremen</div>
+        </div>
+        <div class="entry-date">2026 — Heute</div>
+        <ul class="entry-bullets">
+          <li>Erstellung von Inhalten für Community-Projekte</li>
+          <li>Stärkung der Aufmerksamkeit durch strukturiertes Storytelling</li>
+          <li>Mitarbeit in nutzerorientierten Teams</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="m-section">
+      <div class="m-label">Projekte & Portfolio</div>
+      <div class="proj-grid">
+        <div class="proj-card">
+          <div class="proj-name">Scalable Design System</div>
+          <div class="proj-type">Tokens · Components · Documentation</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Figma</span>
+            <span class="proj-tag">Design Tokens</span>
+            <span class="proj-tag">Auto-Layout</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">Travel Places App</div>
+          <div class="proj-type">Mobile UX · Information Architecture</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Figma</span>
+            <span class="proj-tag">Prototyping</span>
+            <span class="proj-tag">User Flow</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">Food Ordering Platform</div>
+          <div class="proj-type">E-Commerce UX · Conversion Design</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Figma</span>
+            <span class="proj-tag">UI Components</span>
+            <span class="proj-tag">Usability</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">Movie Streaming App</div>
+          <div class="proj-type">Content Discovery · Dark UI</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Figma</span>
+            <span class="proj-tag">Visual Design</span>
+            <span class="proj-tag">Navigation</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">Car Rental Website</div>
+          <div class="proj-type">Web UX · Booking Flow Design</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Figma</span>
+            <span class="proj-tag">Prototyping</span>
+            <span class="proj-tag">Responsive</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-name">E-Bike Website</div>
+          <div class="proj-type">Product Landing Page · Brand Design</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Figma</span>
+            <span class="proj-tag">Visual Design</span>
+            <span class="proj-tag">Brand Identity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why OWL-IT -->
+    <div class="m-section">
+      <div class="m-label">Stärken für OWL-IT</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm">
+        <div style="background:#f0f4ff;border-radius:6px;padding:3mm 4mm">
+          <div style="font-size:11px;font-weight:600;color:#1a3cff;margin-bottom:1mm">🧠 Psychologie × Design</div>
+          <div style="font-size:11px;color:#555">Nutzerverhalten, mentale Modelle und kognitive Belastung direkt im Designprozess anwenden.</div>
+        </div>
+        <div style="background:#f0fdf8;border-radius:6px;padding:3mm 4mm">
+          <div style="font-size:11px;font-weight:600;color:#00866a;margin-bottom:1mm">⚙ Technisches Verständnis</div>
+          <div style="font-size:11px;color:#555">C/C++ Kenntnisse und Grundverständnis von Frontend-Technologien ermöglichen entwicklergerechte Designs.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
